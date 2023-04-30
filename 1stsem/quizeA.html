@@ -405,7 +405,9 @@ footer button.show{
     width: 390px;
     margin-left: .2rem;
     margin-top: 1rem;
-    
+    }
+    .result_box {
+        width: 400px;
     }
 }
 	</style>
@@ -418,7 +420,7 @@ footer button.show{
     <div class="info_box">
         <div class="info-title"><span>Some Rules of this Quiz</span></div>
         <div class="info-list">
-            <div class="info">1. You will have only <span>15 seconds</span> per each question.</div>
+            <div class="info">1. You will have only <span>30 seconds</span> per each question.</div>
             <div class="info">2. Once you select your answer, it can't be undone.</div>
             <div class="info">3. You can't select any option once time goes off.</div>
             <div class="info">4. You can't exit from the Quiz while you're playing.</div>
@@ -436,7 +438,7 @@ footer button.show{
             <div class="title">Awesome Quiz Application</div>
             <div class="timer">
                 <div class="time_left_txt">Time Left</div>
-                <div class="timer_sec">15</div>
+                <div class="timer_sec">30</div>
             </div>
             <div class="time_line"></div>
         </header>
@@ -463,7 +465,9 @@ footer button.show{
         <div class="icon">
             <i class="fas fa-crown"></i>
         </div>
-        <div class="complete_text">You've completed the Quiz!</div>
+        <div class="complete_text">
+            <u><h3>59notes - sonu sagar</h3></u><br>
+            You've completed the Quiz!</div>
         <div class="score_text">
           
         </div>
@@ -477,13 +481,13 @@ footer button.show{
 		let questions = [
     {
     numb: 1,
-    question: "What does HTML stand for?",
-    answer: "Hyper Text Markup Language",
+    question: "1KWH is unit of?",
+    answer: "Energy",
     options: [
-      "Hyper Text Preprocessor",
-      "Hyper Text Markup Language",
-      "Hyper Text Multiple Language",
-      "Hyper Tool Multi Language"
+      "Time",
+      "Power",
+      "Energy",
+      "Stress"
     ]
   },
     {
@@ -543,6 +547,18 @@ footer button.show{
        "option 4"
     ]
    },
+   
+    {
+     numb: 7,
+     question: "Your Question is Here",
+  
+     options: [
+       "Option 1",
+       "option 2",
+       "option 3",
+       "option 4"
+    ]
+   },
 ];
 //selecting all required elements
 const start_btn = document.querySelector(".start_btn button");
@@ -572,11 +588,11 @@ continue_btn.onclick = ()=>{
     quiz_box.classList.add("activeQuiz"); //show quiz box
     showQuetions(0); //calling showQestions function
     queCounter(1); //passing 1 parameter to queCounter
-    startTimer(15); //calling startTimer function
+    startTimer(30); //calling startTimer function
     startTimerLine(0); //calling startTimerLine function
 }
 
-let timeValue =  15;
+let timeValue =  30;
 let que_count = 0;
 let que_numb = 1;
 let userScore = 0;
@@ -591,7 +607,7 @@ const quit_quiz = result_box.querySelector(".buttons .quit");
 restart_quiz.onclick = ()=>{
     quiz_box.classList.add("activeQuiz"); //show quiz box
     result_box.classList.remove("activeResult"); //hide result box
-    timeValue = 15; 
+    timeValue = 30; 
     que_count = 0;
     que_numb = 1;
     userScore = 0;
@@ -744,8 +760,8 @@ function startTimerLine(time){
     counterLine = setInterval(timer, 29);
     function timer(){
         time += 1; //upgrading time value with 1
-        time_line.style.width = time + "px"; //increasing width of time_line with px by time value
-        if(time > 549){ //if time value is greater than 549
+        time_line.style.width = time/2 + "px"; //increasing width of time_line with px by time value
+        if(time > 1100){ //if time value 549 is greater than 549
             clearInterval(counterLine); //clear counterLine
         }
     }
